@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+</head>
+<body>
+    <h1>Countdown Timer</h1>
+    <p id="countdown"></p>
+
+    <script>
+        // Target date: March 12, 2024
+        const targetDate = new Date('2024-03-12');
+
+        // Function to calculate remaining time
+        function calculateRemainingTime() {
+            const currentDate = new Date();
+            const timeDifference = targetDate - currentDate;
+
+            // Calculate days, hours, and minutes
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+            // Format the countdown message
+            let countdownMessage;
+            if (days < 2) {
+                countdownMessage = `${days} day, ${hours} hours, and ${minutes} minutes`;
+            } else {
+                countdownMessage = `${days} days`;
+            }
+
+            return countdownMessage;
+        }
+
+        // Update the countdown dynamically
+        document.getElementById('countdown').textContent = `Time remaining: ${calculateRemainingTime()}`;
+    </script>
+</body>
+</html>
